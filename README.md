@@ -9,7 +9,7 @@ git clone https://github.com/paridin/dotfiles.git ~/.dotfiles
 
 ## load personal dotfiles
 
-Edit your `.zshrc` (`vim ~/.zshrc`) then add at the end the next if condition.
+Edit your `.zshrc` (`vim ~/.zshrc`) then add at the end the following if condition..
 
 ```zsh
 if [[ -s "${HOME}/.dotfiles/init.zsh" ]]; then
