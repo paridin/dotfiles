@@ -1,9 +1,6 @@
 # Default to local software
 export PATH=$HOME/.local/bin:/usr/local/sbin:$PATH
 
-# set TERM to use 256 colors
-export TERM=xterm-256color
-
 # When brew exists, use it adding to the path
 if [[ (( $+commands[brew] )) ]]; then
   source ${HOME}/.dotfiles/paridin-prompt/paridin-prompt.zsh-theme
@@ -61,4 +58,8 @@ fi
 color_shell_schema() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
+
+if [[ (( $+commands[nvim] )) ]]; then
+  alias vim=nvim
+fi
 
