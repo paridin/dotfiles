@@ -17,7 +17,11 @@ fi
 
 # Theme for p10k
 if [[ (( $+commands[p10k] )) ]]; then
-  export POWERLEVEL9K_CONFIG_FILE=~/.dotfiles/defdo-prompt/p10k.defdo-theme-base.zsh
+  # default themej
+  # export POWERLEVEL9K_CONFIG_FILE=~/.dotfiles/defdo-prompt/p10k.defdo-theme-base.zsh
+  # export POWERLEVEL9K_CONFIG_FILE=~/.dotfiles/defdo-prompt/p10k.defdo-theme-base.zsh
+  # hallowen theme
+  export POWERLEVEL9K_CONFIG_FILE=~/.dotfiles/defdo-prompt/p10k.defdo-theme-halloween.zsh
 fi
 
 # Secret configs to add whatever you want in secret mostly for credentials
