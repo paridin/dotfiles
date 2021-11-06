@@ -63,3 +63,18 @@ if [[ (( $+commands[nvim] )) ]]; then
   alias vim=nvim
 fi
 
+install_deps_raspi_os() {
+  sudo apt update
+  # git
+  sudo apt install git
+  # vim, nvim
+  sudo apt install vim snapd
+  sudo snap install core
+  sudo snap install nvim --classic
+  # asdf
+  # exa
+  sudo apt install exa
+  # bat a cat alternative
+  BAT_VERSION=0.18.3
+  wget https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_arm64.deb && sudo dpkg -i bat_${BAT_VERSION}_arm64.deb
+}
