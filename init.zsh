@@ -2,18 +2,18 @@
 export PATH=$HOME/.local/bin:/usr/local/sbin:$PATH
 
 # When brew exists, use it adding to the path
-if (( $+commands[brew] )); then
+if [[ (( $+commands[brew] )) ]]; then
   source ${HOME}/.dotfiles/paridin-prompt/paridin-prompt.zsh-theme
   export PATH=$PATH:/opt/homebrew/bin
 fi
 
 # When zimfw is installed use the paridin-prompt as default theme  
-if (( $+commands[zimfw] )); then
+if [[ (( $+commands[zimfw] )) ]]; then
   source ${HOME}/.dotfiles/paridin-prompt/paridin-prompt.zsh-theme
 fi
 
 # Theme for p10k
-if (( $+commands[p10k] )); then
+if [[ (( $+commands[p10k] )) ]]; then
   # default themej
   # export POWERLEVEL9K_CONFIG_FILE=~/.dotfiles/defdo-prompt/p10k.defdo-theme-base.zsh
   # export POWERLEVEL9K_CONFIG_FILE=~/.dotfiles/defdo-prompt/p10k.defdo-theme-base.zsh
@@ -27,29 +27,22 @@ if [[ -s "${HOME}/.dotfiles/secret.zsh" ]]; then
 fi
 
 # When asdf is installed configure it
-if (( $+commands[asdf] )); then
-  if [[ -f /opt/homebrew/opt/asdf/asdf.sh ]]; then
-    # when asdf is installed via homebrew
-    source /opt/homebrew/opt/asdf/asdf.sh
-  else
-    # default to git usage prefered by me
-    source $HOME/.asdf/asdf.sh
-  fi
-
+if [[ -f ${ASDF_DIR}/asdf.sh ]]; then
+  source ${ASDF_DIR}/.asdf/asdf.sh
   fpath=(${ASDF_DIR}/completions $fpath)
 fi
 
 # Flavour commands for zsh
 
 # prefear usage of exa for ls actions -> brew install exa
-if (( $+commands[exa] )); then
+if [[ (( $+commands[exa] )) ]]; then
   alias ll="exa -lsnewest"
   alias la="exa -lasnewest"
 fi
 
 # prefear usage of bat for cat actions -> brew install bat
-if (( $+commands[bat] )); then
-  alias cat=bat
+if [[ (( $+commands[bat] )) ]]; then
+  alias cat="bat"
 fi
 
 # Helper functions
@@ -59,9 +52,8 @@ color_shell_schema() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
-if (( $+commands[nvim] )); then
-  alias vim=nvim
-fi
+if ({ which vim }) alias vi vim >&/dev/null
+if ({ which nvim }) alias vim nvim >&/dev/null
 
 install_deps_raspi_os() {
   sudo apt update
