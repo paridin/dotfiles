@@ -52,8 +52,13 @@ color_shell_schema() {
   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 }
 
-if ({ which vim }) alias vi vim >&/dev/null
-if ({ which nvim }) alias vim nvim >&/dev/null
+if type vim >/dev/null 2>/dev/null; then
+  alias vi=vim
+fi
+
+if type nvim >/dev/null 2>/dev/null; then
+  alias vim=nvim
+fi
 
 install_deps_raspi_os() {
   sudo apt update
