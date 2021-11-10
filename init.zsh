@@ -27,8 +27,8 @@ if [[ -s "${HOME}/.dotfiles/secret.zsh" ]]; then
 fi
 
 # When asdf is installed configure it
-if [[ -f ${ASDF_DIR}/asdf.sh ]]; then
-  source ${ASDF_DIR}/asdf.sh
+if [[ -f ~/.asdf/asdf.sh ]]; then
+  source ~/.asdf/asdf.sh
   fpath=(${ASDF_DIR}/completions $fpath)
 fi
 
