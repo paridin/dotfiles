@@ -56,8 +56,15 @@ if type vim >/dev/null 2>/dev/null; then
   alias vi=vim
 fi
 
+# Set nvim config if it is installed
 if type nvim >/dev/null 2>/dev/null; then
+  setup_nvim() {
+    ln -s $HOME/.dotfiles/.nvim_config/nvim $HOME/.config/nvim
+  }
+
   alias vim=nvim
+  alias nvimplugins="nvim $HOME/.dotfiles/.nvim_config/nvim/vim-plug/plugins.vim"
+  alias nviminit="nvim $HOME/.dotfiles/.nvim_config/nvim/init.vim"
 fi
 
 install_deps_raspi_os() {
