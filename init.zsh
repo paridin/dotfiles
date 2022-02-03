@@ -36,13 +36,23 @@ fi
 
 # prefear usage of exa for ls actions -> brew install exa
 if [[ (( $+commands[exa] )) ]]; then
-  alias ll="exa -lsnewest"
-  alias la="exa -lasnewest"
+  alias l="exa --tree -L 1 --icons"
+  alias ll="exa --tree -L 1 -lsnewest --icons"
+  alias la="exa --tree -L 1 -lasnewest --icons"
 fi
 
 # prefear usage of bat for cat actions -> brew install bat
 if [[ (( $+commands[bat] )) ]]; then
   alias cat="bat"
+fi
+
+eval "$(jump shell)"
+
+if [[ (( $+commands[tree] )) ]]; then
+  t() {
+    local _level=${1:-1}
+    tree . -L $_level --gitignore -d --metafirst --info -D -t
+  }
 fi
 
 # Helper functions
