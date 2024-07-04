@@ -34,11 +34,10 @@ fi
 
 # Flavour commands for zsh
 
-# prefear usage of exa for ls actions -> brew install exa
-if [[ (( $+commands[exa] )) ]]; then
-  alias l="exa --tree -L 1 --icons"
-  alias ll="exa --tree -L 1 -lsnewest --icons"
-  alias la="exa --tree -L 1 -lasnewest --icons"
+# prefear usage of lsd for ls actions -> brew install lsd
+if [[ (( $+commands[lsd] )) ]]; then
+  alias lt="lsd --tree"
+  alias ll="lsd -ltra"
 fi
 
 # prefear usage of bat for cat actions -> brew install bat
@@ -46,7 +45,9 @@ if [[ (( $+commands[bat] )) ]]; then
   alias cat="bat"
 fi
 
-eval "$(jump shell)"
+if [[ (( $+commands[jump] )) ]]; then
+  eval "$(jump shell)"
+fi
 
 if [[ (( $+commands[tree] )) ]]; then
   t() {
@@ -92,3 +93,12 @@ install_deps_raspi_os() {
   BAT_VERSION=0.18.3
   wget https://github.com/sharkdp/bat/releases/download/v${BAT_VERSION}/bat_${BAT_VERSION}_arm64.deb && sudo dpkg -i bat_${BAT_VERSION}_arm64.deb
 }
+
+# helpers
+if [[ -f ~/.dotfiles/aws_ecr_helpers.zsh ]]; then
+  source ~/.dotfiles/aws_ecr_helpers.zsh
+fi
+
+if [[ -d /usr/local/Cellar/ruby/3.3.1/bin ]]; then
+  export PATH=/usr/local/Cellar/ruby/3.3.1/bin:$PATH
+fi
