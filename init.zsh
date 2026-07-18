@@ -26,6 +26,11 @@ if [[ -s "${HOME}/.dotfiles/secret.zsh" ]]; then
   source "${HOME}/.dotfiles/secret.zsh"
 fi
 
+# ESP-IDF helpers and aliases — activate with: get_idf
+if [[ -s "${HOME}/.dotfiles/esp-idf.zsh" ]]; then
+  source "${HOME}/.dotfiles/esp-idf.zsh"
+fi
+
 # When asdf is installed configure it
 if [[ -f ~/.asdf/asdf.sh ]]; then
   source ~/.asdf/asdf.sh
