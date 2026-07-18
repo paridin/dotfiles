@@ -1,3 +1,4 @@
 secret.zsh
 secret.*.zsh
 .DS_Store
+.vscode/
